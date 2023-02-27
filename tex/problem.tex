@@ -1,0 +1,112 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\title{Marathon of Parallel Programming - 2023\\ Problem: Turmites}
+
+\author{Wilton Jaciel Loch}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem definition}
+
+Turmites are Turing Machine equivalents which have a state, direction and a
+position in a two-dimensional grid (or board) tape over which they operate.
+%
+Given the state of the turmite and the color of the cell over which it resides
+a diferent set of actions may be taken.
+%
+These actions are governed by a state transition table and can be diverse:
+including doing nothing, changing the color of the cell, turning to a
+particular direction and moving forward, etc.
+
+Particular shapes and patterns will appear on the board after the execution of a
+certain number of steps. These may be the result of both chaotic and regular
+phases of board alterations by one or more turmites.
+
+The presented algorithm implements a two-color version of the turmites with a
+finite two-dimensional grid.
+%
+The state transition table is predefined and hard-coded, containing only two
+possible states for each turmite.
+%
+The resulting board is printed using ASCII characters after all turmites
+finished the execution of all the steps.
+
+\section*{Input}
+
+The input is comprised only of natural numbers (unsigned integers) and represents a single test case.
+%
+The first line contains two integers $r$ and $c$, respectively representing the number of rows and columns of the board.
+%
+The second line contains an integer $n$ defining the total number of steps that each turmite should perform.
+%
+Following, an integer $t$ representing the number of turmites to be placed on the board is read.
+%
+Finally, $t$ initial turmite positions are sequentially informed, each denoted by two
+integers $x$ and $y$, with $0 \leq x < r$ and $0 \leq y < c$.
+%
+
+\textit{The input must be read form the standard input.}
+
+\section*{Output}
+
+The output contains $r$ lines with $c$ characters each. A line represents a row of
+the board, with white space characters corresponding to white color tiles and asterisks
+corresponding to black color tiles.
+
+\textit{The output must be written to the standard output.}
+
+\section*{Example}
+
+\begin{table}[!ht]
+    \begin{tabular}{|l|l|}
+        \hline
+        Input example 1 & Output example 1 \\
+        10 20 &\texttt{*\ \ \ \ *\ \ **\ \ ****\ \ \ \ }\\
+        1000  &\texttt{*\ \ **\ \ \ \ *\ *\ *\ *****}\\
+        2     &\texttt{\ \ \ \ *****\ *\ \ \ \ **\ \ \ }\\
+        5 10  &\texttt{**\ *\ *\ \ ******\ \ ***\ }\\
+        3 3   &\texttt{\ **\ **\ **\ \ *\ *\ \ ***\ }\\
+              &\texttt{*\ ***\ \ \ *\ \ **\ \ ***\ \ }\\
+              &\texttt{\ \ *\ *\ \ \ \ ***\ \ *\ **\ *}\\
+              &\texttt{\ *\ \ \ \ ***\ *\ \ *\ \ ***\ }\\
+              &\texttt{*\ \ *******\ \ \ ***\ **\ }\\
+              &\texttt{\ **\ \ \ **\ \ \ \ *\ **\ **\ }\\
+        \hline
+   \end{tabular}
+\end{table}
+
+\begin{table}[!ht]
+    \begin{tabular}{|l|l|}
+        \hline
+        Input example 2 & Output example 2 \\
+
+        20 40 &\texttt{\ \ \ \ \ \ \ \ \ \ \ *\ **\ **\ \ \ \ *\ \ \ \ *\ \ \ \ \ \ \ \ \ \ \ \ } \\
+        10000 &\texttt{\ \ \ \ *\ \ \ *\ \ \ \ \ \ \ \ \ **\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ ***\ } \\
+        2     &\texttt{\ \ \ \ *\ \ **\ \ *\ \ \ \ \ \ ***\ \ *\ \ \ \ \ \ \ \ **\ ****\ } \\
+        2 3   &\texttt{*\ \ \ *\ **\ \ ***\ *\ \ **\ \ ***\ \ \ \ \ \ \ \ \ ***\ **\ } \\
+        13 20 &\texttt{***\ *\ \ \ *\ \ \ **\ \ ****\ \ **\ \ *\ \ \ *\ *\ \ \ \ \ \ \ } \\
+              &\texttt{\ \ \ ****\ *****\ **\ *\ \ **\ \ \ \ \ \ **\ *\ \ *\ *\ **} \\
+              &\texttt{\ ***\ *\ *\ *\ ***\ \ **\ \ \ \ \ *\ \ ***\ \ \ **\ \ *\ \ *} \\
+              &\texttt{\ \ **\ \ \ *\ *\ \ \ *\ **\ \ \ ***\ *\ *\ *\ \ ***\ \ **\ *} \\
+              &\texttt{\ ****\ \ *\ \ \ ***\ *\ **\ \ **\ ********\ *\ \ **\ \ } \\
+              &\texttt{*\ \ \ \ ***\ ***\ *\ ****\ *\ \ \ \ \ \ \ **\ ***\ **\ \ \ } \\
+              &\texttt{\ *\ \ \ *\ \ \ \ *\ \ **\ *\ \ \ \ *\ \ *\ \ \ \ *\ \ \ ***\ \ \ *} \\
+              &\texttt{\ \ \ ***\ \ \ \ *\ \ *\ **\ **\ **\ \ *\ **\ **\ \ *\ \ *\ \ } \\
+              &\texttt{\ \ \ \ \ \ \ \ \ \ **********\ \ \ *\ \ ***\ \ \ \ *\ \ *\ *\ } \\
+              &\texttt{\ *\ \ **\ **\ ****\ \ \ \ \ **\ **\ \ \ \ \ \ \ *\ \ \ \ \ *\ \ } \\
+              &\texttt{\ *\ \ *\ \ ***\ **\ **\ \ \ \ \ \ *\ \ *\ **\ \ **\ **\ \ \ *} \\
+              &\texttt{***\ *\ \ \ *****\ \ \ \ \ \ *\ *\ *\ ***********\ **\ } \\
+              &\texttt{\ \ \ \ *\ \ ****\ \ \ \ \ ***\ *\ \ \ \ \ \ \ **\ \ \ \ \ \ \ **\ } \\
+              &\texttt{***\ \ \ \ *\ *\ *\ \ ***\ \ \ *\ *\ \ \ \ ****\ \ **\ \ \ \ \ } \\
+              &\texttt{*\ \ \ \ \ \ *\ \ ***\ ***\ **\ **\ \ \ \ \ \ *\ ***\ *\ \ \ \ } \\
+              &\texttt{\ \ \ \ \ \ \ \ *\ **\ **\ \ *\ \ \ \ \ \ \ \ \ *\ **\ \ \ \ \ \ \ \ \ } \\
+
+        \hline
+   \end{tabular}
+\end{table}
+
+\end{document}
