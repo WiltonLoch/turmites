@@ -1,1 +1,2 @@
-turmites
+build/*
+Makefile
