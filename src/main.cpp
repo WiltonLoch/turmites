@@ -5,6 +5,7 @@
 #include <map>
 
 #include "ascii_board.hpp"
+#include "sfml_board.hpp"
 
 using namespace std;
 
@@ -38,8 +39,8 @@ int main() {
 
     // Creates the board, turmites and positions them on the board
     cin >> board_rows >> board_columns >> total_steps >> turmite_number;
-    AsciiBoard board(board_rows, board_columns);
-    board.set_draw_period(total_steps);
+    SfmlBoard board(board_rows, board_columns, 1920, 1080);
+    board.set_draw_period(1000);
 
     vector<turmite> turmites(turmite_number);
     for (int i = 0; i < turmite_number; i++)
@@ -59,8 +60,9 @@ int main() {
             turmite.current_state = transition[NEXT_STATE];
         }
         if(board.is_active())
-            board.draw(time_step + 1);
+            board.draw(time_step);
         else
-            return 0;
+            return 1;
     }
+    return 0;
 }
