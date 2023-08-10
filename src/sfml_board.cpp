@@ -3,6 +3,7 @@
 #include <SFML/System/Vector2.hpp>
 #include <SFML/Window/VideoMode.hpp>
 #include <iostream>
+#include <chrono>
 
 #include "sfml_board.hpp"
 
@@ -17,6 +18,14 @@ SfmlBoard::SfmlBoard (unsigned int rows, unsigned int columns, unsigned int wind
 SfmlBoard::~SfmlBoard () {
     delete window;
 }
+
+void SfmlBoard::set_render_interval(float render_interval) {
+    this->render_interval = render_interval;
+};
+
+float SfmlBoard::get_render_interval() {
+    return render_interval;
+};
 
 void SfmlBoard::draw(unsigned int current_iteration) {
     if(draw_period > 1 && current_iteration % draw_period != 0) return;
@@ -33,10 +42,18 @@ void SfmlBoard::draw(unsigned int current_iteration) {
             window->draw(tile);
         }
     }
-    while (window->pollEvent(event)) {
-        if(event.type == sf::Event::Closed)
-            window->close();
-    }
+
+    std::chrono::duration<double> elapsed_time;
+    auto start = std::chrono::steady_clock::now();
+    do {
+        while (window->pollEvent(event)) {
+            if(event.type == sf::Event::Closed)
+                window->close();
+        }
+        auto end = std::chrono::steady_clock::now();
+        elapsed_time = end - start;
+    } while (elapsed_time.count() < render_interval);
+
     window->display();
     active = window->isOpen();
 }

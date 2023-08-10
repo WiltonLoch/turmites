@@ -40,7 +40,8 @@ int main() {
     // Creates the board, turmites and positions them on the board
     cin >> board_rows >> board_columns >> total_steps >> turmite_number;
     SfmlBoard board(board_rows, board_columns, 1920, 1080);
-    board.set_draw_period(1000);
+    board.set_draw_period(10);
+    board.set_render_interval(0.05);
 
     vector<turmite> turmites(turmite_number);
     for (int i = 0; i < turmite_number; i++)
